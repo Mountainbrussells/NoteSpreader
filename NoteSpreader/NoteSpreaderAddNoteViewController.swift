@@ -7,26 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var keyBoardHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    let coreDataController = BARCoreDataController.sharedInstance
+    
+    var noteID: NSManagedObjectID?
+    var note: Note?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        doneButton.isHidden = true
+        if noteID == nil {
+            textView.text = "Type note here"
+            textView.textColor = UIColor.lightGray
+            doneButton.isHidden = true
+            
+        } else {
+            note = coreDataController.container.viewContext.object(with: noteID!) as? Note
+            
+            textView.text = note?.text
+            doneButton.isHidden = true
+            saveButton.isHidden = true
+        }
+        
         
         textView.delegate = self
-        textView.text = "Type note here"
-        textView.textColor = UIColor.lightGray
+        
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,6 +79,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
                 self.keyBoardHeightLayoutConstraint?.constant = 0.0
             } else {
                 doneButton.isHidden = false
+                saveButton.isHidden = false
                 self.keyBoardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
             }
             UIView.animate(withDuration: duration,
@@ -75,4 +94,26 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBAction func done(_ sender: Any) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func save(_ sender: Any) {
+        guard textView.text.characters.count > 0 && textView.text != "Type note here" else {
+            let alertController = UIAlertController(title: "No text", message: "there is nothing to save", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        if note == nil {
+            note = Note(context: coreDataController.container.viewContext)
+        }
+        note?.text = textView.text
+        
+        coreDataController.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

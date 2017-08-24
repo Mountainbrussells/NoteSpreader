@@ -18,13 +18,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="whN-4y-O8l">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="V2h-gQ-l3Y" detailTextLabel="Eyr-Vj-hPN" style="IBUITableViewCellStyleSubtitle" id="whN-4y-O8l">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whN-4y-O8l" id="yvm-Vk-OeE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V2h-gQ-l3Y">
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eyr-Vj-hPN">
+                                            <rect key="frame" x="15" y="25.5" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BEn-2H-Ggw" kind="show" identifier="showNoteSeque" id="HHu-gt-sRk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,7 +54,7 @@
                     <navigationItem key="navigationItem" title="Note Spreader" id="E0K-Eo-M7s">
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="vYh-L3-B9d">
                             <connections>
-                                <segue destination="BEn-2H-Ggw" kind="show" id="4ws-nj-3cE"/>
+                                <segue destination="BEn-2H-Ggw" kind="show" identifier="addNoteSegue" id="4ws-nj-3cE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -70,6 +89,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1r8-1W-HJa">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="save:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="qNt-wh-mjq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWz-b6-48W">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
@@ -98,12 +120,13 @@
                     <connections>
                         <outlet property="doneButton" destination="RWz-b6-48W" id="ba9-jh-eLX"/>
                         <outlet property="keyBoardHeightLayoutConstraint" destination="IXy-Mx-J3I" id="Zun-ZL-QJK"/>
+                        <outlet property="saveButton" destination="1r8-1W-HJa" id="dEi-gO-yjG"/>
                         <outlet property="textView" destination="o6Z-cx-Y10" id="l7n-bj-him"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgI-IX-zDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2072.8000000000002" y="-495.20239880059972"/>
+            <point key="canvasLocation" x="1820" y="159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vnD-3y-gH9">
@@ -124,4 +147,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="159.67016491754123"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HHu-gt-sRk"/>
+    </inferredMetricsTieBreakers>
 </document>

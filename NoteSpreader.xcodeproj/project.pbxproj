@@ -30,7 +30,7 @@
 		C90454081F4F18F6004187FE /* NoteSpreader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteSpreader.xcdatamodel; sourceTree = "<group>"; };
 		C90454131F4F23B9004187FE /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "NoteSpreader/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "NoteSpreader/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C90454171F4F28D3004187FE /* BARCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BARCoreDataController.swift; sourceTree = "<group>"; };
+		C90454171F4F28D3004187FE /* BARCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BARCoreDataController.swift; path = ../BARCoreDataController.swift; sourceTree = "<group>"; };
 		C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpreaderAddNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +81,6 @@
 				C90454071F4F18F6004187FE /* NoteSpreader.xcdatamodeld */,
 				C90454131F4F23B9004187FE /* Note+CoreDataClass.swift */,
 				C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */,
-				C90454171F4F28D3004187FE /* BARCoreDataController.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -98,6 +97,7 @@
 		C904540C1F4F1AAB004187FE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C90454171F4F28D3004187FE /* BARCoreDataController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -364,6 +364,7 @@
 				C90454031F4E2B66004187FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
