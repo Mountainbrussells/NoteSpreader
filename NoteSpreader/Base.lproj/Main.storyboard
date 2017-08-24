@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Cf5-kR-fGx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Note Spreader Table View Controller-->
+        <!--Note Spreader-->
         <scene sceneID="V0Z-SI-Wi6">
             <objects>
                 <tableViewController id="2oR-qr-b6z" customClass="NoteSpreaderTableViewController" customModule="NoteSpreader" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,11 +32,78 @@
                             <outlet property="delegate" destination="2oR-qr-b6z" id="SrD-El-hqF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="E0K-Eo-M7s"/>
+                    <navigationItem key="navigationItem" title="Note Spreader" id="E0K-Eo-M7s">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="vYh-L3-B9d">
+                            <connections>
+                                <segue destination="BEn-2H-Ggw" kind="show" id="4ws-nj-3cE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMo-gG-nTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="159.67016491754123"/>
+        </scene>
+        <!--Note Spreader Add Note View Controller-->
+        <scene sceneID="Rvz-yb-KtX">
+            <objects>
+                <viewController id="BEn-2H-Ggw" customClass="NoteSpreaderAddNoteViewController" customModule="NoteSpreader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bJX-4S-iD3"/>
+                        <viewControllerLayoutGuide type="bottom" id="N8p-Ts-MnY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oqb-Na-VyG" customClass="ADBannerView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o6Z-cx-Y10">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mel-cT-6dL">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1r8-1W-HJa">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWz-b6-48W">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="done:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="iyi-hs-SXn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PYT-I3-aoh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="o6Z-cx-Y10" secondAttribute="trailing" id="E4d-xh-dFa"/>
+                            <constraint firstItem="o6Z-cx-Y10" firstAttribute="top" secondItem="oqb-Na-VyG" secondAttribute="top" id="Fpd-ZG-13o"/>
+                            <constraint firstItem="Mel-cT-6dL" firstAttribute="leading" secondItem="oqb-Na-VyG" secondAttribute="leading" id="FsH-fw-Tcw"/>
+                            <constraint firstItem="N8p-Ts-MnY" firstAttribute="top" secondItem="Mel-cT-6dL" secondAttribute="bottom" id="IXy-Mx-J3I"/>
+                            <constraint firstItem="Mel-cT-6dL" firstAttribute="top" secondItem="o6Z-cx-Y10" secondAttribute="bottom" constant="8" id="cEB-XN-1Di"/>
+                            <constraint firstItem="o6Z-cx-Y10" firstAttribute="leading" secondItem="oqb-Na-VyG" secondAttribute="leading" id="fep-dN-aAy"/>
+                            <constraint firstAttribute="trailing" secondItem="Mel-cT-6dL" secondAttribute="trailing" id="wmo-G5-D5p"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="RWz-b6-48W" id="ba9-jh-eLX"/>
+                        <outlet property="keyBoardHeightLayoutConstraint" destination="IXy-Mx-J3I" id="Zun-ZL-QJK"/>
+                        <outlet property="textView" destination="o6Z-cx-Y10" id="l7n-bj-him"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgI-IX-zDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2072.8000000000002" y="-495.20239880059972"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vnD-3y-gH9">

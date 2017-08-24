@@ -7,23 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
-class NoteSpreaderTableViewController: UITableViewController {
+class NoteSpreaderTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    let coreDataController = BARCoreDataController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - FetchedResultsController & Delegate
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Note> = {
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedOn", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataController.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+
 
     // MARK: - Table view data source
 

@@ -15,6 +15,8 @@
 		C90454091F4F18F6004187FE /* NoteSpreader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C90454071F4F18F6004187FE /* NoteSpreader.xcdatamodeld */; };
 		C90454151F4F23B9004187FE /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454131F4F23B9004187FE /* Note+CoreDataClass.swift */; };
 		C90454161F4F23B9004187FE /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */; };
+		C90454181F4F28D3004187FE /* BARCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454171F4F28D3004187FE /* BARCoreDataController.swift */; };
+		C904541A1F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		C90454081F4F18F6004187FE /* NoteSpreader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteSpreader.xcdatamodel; sourceTree = "<group>"; };
 		C90454131F4F23B9004187FE /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "NoteSpreader/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "NoteSpreader/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C90454171F4F28D3004187FE /* BARCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BARCoreDataController.swift; sourceTree = "<group>"; };
+		C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpreaderAddNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 				C90454071F4F18F6004187FE /* NoteSpreader.xcdatamodeld */,
 				C90454131F4F23B9004187FE /* Note+CoreDataClass.swift */,
 				C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */,
+				C90454171F4F28D3004187FE /* BARCoreDataController.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -84,6 +89,7 @@
 		C904540A1F4F1A56004187FE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */,
 				C90454041F4E3A37004187FE /* NoteSpreaderTableViewController.swift */,
 			);
 			name = ViewControllers;
@@ -189,7 +195,9 @@
 				C90453F31F4E2B66004187FE /* AppDelegate.swift in Sources */,
 				C90454151F4F23B9004187FE /* Note+CoreDataClass.swift in Sources */,
 				C90454051F4E3A37004187FE /* NoteSpreaderTableViewController.swift in Sources */,
+				C904541A1F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift in Sources */,
 				C90454091F4F18F6004187FE /* NoteSpreader.xcdatamodeld in Sources */,
+				C90454181F4F28D3004187FE /* BARCoreDataController.swift in Sources */,
 				C90454161F4F23B9004187FE /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

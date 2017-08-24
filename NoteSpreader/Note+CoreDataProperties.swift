@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+let titleLength = 50
 
 extension Note {
 
@@ -25,11 +26,11 @@ extension Note {
             guard let text = self.text else {
                 return ""
             }
-            if text.characters.count < 50 {
+            if text.characters.count < titleLength {
                 return self.text
             } else {
                 let startIndex =  text.index(text.startIndex, offsetBy: 0)
-                let endIndex = text.index(startIndex, offsetBy: 50)
+                let endIndex = text.index(startIndex, offsetBy: titleLength)
                 return text[startIndex...endIndex]
             }
         }
@@ -38,9 +39,7 @@ extension Note {
             actualTitle = newValue
         }
     }
-    
-    
-    
+
     override public func willSave() {
         if createdOn == nil {
             self.createdOn = Date()
