@@ -66,7 +66,8 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // MARK: - Keyboard presentation
+    // MARK: - Keyboard presentation and dismissal
+    
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
@@ -90,6 +91,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: - Button implimentation
     
     @IBAction func done(_ sender: Any) {
         self.view.endEditing(true)

@@ -17,6 +17,7 @@
 		C90454161F4F23B9004187FE /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */; };
 		C90454181F4F28D3004187FE /* BARCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454171F4F28D3004187FE /* BARCoreDataController.swift */; };
 		C904541A1F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */; };
+		C9F2FC8C1F4FA3E700B18135 /* BARLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC8B1F4FA3E600B18135 /* BARLocationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C90454141F4F23B9004187FE /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "NoteSpreader/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C90454171F4F28D3004187FE /* BARCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BARCoreDataController.swift; path = ../BARCoreDataController.swift; sourceTree = "<group>"; };
 		C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpreaderAddNoteViewController.swift; sourceTree = "<group>"; };
+		C9F2FC8B1F4FA3E600B18135 /* BARLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BARLocationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C90454171F4F28D3004187FE /* BARCoreDataController.swift */,
+				C9F2FC8B1F4FA3E600B18135 /* BARLocationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F2FC8C1F4FA3E700B18135 /* BARLocationController.swift in Sources */,
 				C90453F31F4E2B66004187FE /* AppDelegate.swift in Sources */,
 				C90454151F4F23B9004187FE /* Note+CoreDataClass.swift in Sources */,
 				C90454051F4E3A37004187FE /* NoteSpreaderTableViewController.swift in Sources */,
@@ -325,6 +329,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GUY34L2LLG;
 				INFOPLIST_FILE = NoteSpreader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.benrussell.NoteSpreader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -338,6 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GUY34L2LLG;
 				INFOPLIST_FILE = NoteSpreader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.benrussell.NoteSpreader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
