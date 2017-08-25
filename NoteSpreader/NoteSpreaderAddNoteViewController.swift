@@ -139,17 +139,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             return
         }
         
-        let regionDistance:CLLocationDistance = 100
-        let coordinates = CLLocationCoordinate2DMake(location.lattitude, location.longitude)
-        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-        let options = [
-            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-        ]
-        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "Note Location"
-        mapItem.openInMaps(launchOptions: options)
+        locationController.showLocation(location)
     }
     
     
