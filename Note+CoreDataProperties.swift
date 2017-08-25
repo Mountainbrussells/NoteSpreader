@@ -2,12 +2,13 @@
 //  Note+CoreDataProperties.swift
 //  NoteSpreader
 //
-//  Created by BenRussell on 8/24/17.
+//  Created by BenRussell on 8/25/17.
 //  Copyright © 2017 BenRussell. All rights reserved.
 //
 
 import Foundation
 import CoreData
+import UIKit
 
 let titleLength = 50
 
@@ -21,6 +22,7 @@ extension Note {
     @NSManaged public var createdOn: Date?
     @NSManaged public var text: String?
     @NSManaged public var updatedOn: Date?
+    @NSManaged public var photo: UIImage?
     @NSManaged public var location: Location?
     
     public var title: String? {
