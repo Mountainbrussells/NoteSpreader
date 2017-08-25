@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import MapKit
 
-class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
+class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var keyBoardHeightLayoutConstraint: NSLayoutConstraint!
@@ -18,9 +18,11 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     let coreDataController = BARCoreDataController.sharedInstance
     let locationController = BARLocationController()
+    let imagePicker = UIImagePickerController()
     
     var noteID: NSManagedObjectID?
     var note: Note?
@@ -29,6 +31,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        deleteButton.isHidden = true
         if noteID == nil {
             textView.text = "Type note here"
             textView.textColor = UIColor.lightGray
@@ -40,12 +43,16 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             note = coreDataController.container.viewContext.object(with: noteID!) as? Note
             
             textView.text = note?.text
+            if let image = note?.photo {
+                imageView.image = image
+                deleteButton.isHidden = false
+            }
             doneButton.isHidden = true
             saveButton.isHidden = true
             locationButton.isHidden = false
         }
         
-        
+        imagePicker.delegate = self
         textView.delegate = self
         
 
@@ -117,10 +124,13 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         if note == nil {
             note = Note(context: coreDataController.container.viewContext)
             let location = Location(context: coreDataController.container.viewContext)
-            if location.lattitude > 0 {
-                location.lattitude = (locationController.location?.coordinate.latitude)!
-                location.longitude = (locationController.location?.coordinate.longitude)!
+            if let currentLocation = locationController.location?.coordinate {
+                location.lattitude = currentLocation.latitude
+                location.longitude = currentLocation.longitude
                 note?.location = location
+            }
+            if let image = imageView.image {
+                note?.photo = image
             }
         }
         
@@ -147,4 +157,36 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     }
     
     
+    @IBAction func takePhoto(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        } else {
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.modalPresentationStyle = .fullScreen
+        }
+        
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteImage(_ sender: Any) {
+        imageView.isHidden = true
+        note?.photo = nil
+        self.coreDataController.saveContext()
+        deleteButton.isHidden = true
+    }
+    // MARK: - IMagePicker Delegate Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] {
+            note?.photo = image as? UIImage
+            self.coreDataController.saveContext()
+            imageView.image = image as? UIImage
+            imageView.isHidden = false
+            deleteButton.isHidden = false
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }

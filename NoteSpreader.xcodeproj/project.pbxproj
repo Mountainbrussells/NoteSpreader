@@ -16,8 +16,8 @@
 		C90454181F4F28D3004187FE /* BARCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454171F4F28D3004187FE /* BARCoreDataController.swift */; };
 		C904541A1F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */; };
 		C9F2FC8C1F4FA3E700B18135 /* BARLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC8B1F4FA3E600B18135 /* BARLocationController.swift */; };
-		C9F2FC931F4FC46C00B18135 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC8F1F4FC46C00B18135 /* Note+CoreDataClass.swift */; };
-		C9F2FC941F4FC46C00B18135 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC901F4FC46C00B18135 /* Note+CoreDataProperties.swift */; };
+		C9F2FC971F50765600B18135 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC951F50765600B18135 /* Note+CoreDataClass.swift */; };
+		C9F2FC981F50765600B18135 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F2FC961F50765600B18135 /* Note+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		C90454171F4F28D3004187FE /* BARCoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BARCoreDataController.swift; path = ../BARCoreDataController.swift; sourceTree = "<group>"; };
 		C90454191F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSpreaderAddNoteViewController.swift; sourceTree = "<group>"; };
 		C9F2FC8B1F4FA3E600B18135 /* BARLocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BARLocationController.swift; sourceTree = "<group>"; };
-		C9F2FC8F1F4FC46C00B18135 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C9F2FC901F4FC46C00B18135 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C9F2FC951F50765600B18135 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C9F2FC961F50765600B18135 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				C90454071F4F18F6004187FE /* NoteSpreader.xcdatamodeld */,
-				C9F2FC901F4FC46C00B18135 /* Note+CoreDataProperties.swift */,
-				C9F2FC8F1F4FC46C00B18135 /* Note+CoreDataClass.swift */,
+				C9F2FC951F50765600B18135 /* Note+CoreDataClass.swift */,
+				C9F2FC961F50765600B18135 /* Note+CoreDataProperties.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -196,13 +196,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F2FC8C1F4FA3E700B18135 /* BARLocationController.swift in Sources */,
+				C9F2FC981F50765600B18135 /* Note+CoreDataProperties.swift in Sources */,
+				C9F2FC971F50765600B18135 /* Note+CoreDataClass.swift in Sources */,
 				C90453F31F4E2B66004187FE /* AppDelegate.swift in Sources */,
 				C90454051F4E3A37004187FE /* NoteSpreaderTableViewController.swift in Sources */,
 				C904541A1F4F35D4004187FE /* NoteSpreaderAddNoteViewController.swift in Sources */,
-				C9F2FC931F4FC46C00B18135 /* Note+CoreDataClass.swift in Sources */,
 				C90454091F4F18F6004187FE /* NoteSpreader.xcdatamodeld in Sources */,
 				C90454181F4F28D3004187FE /* BARCoreDataController.swift in Sources */,
-				C9F2FC941F4FC46C00B18135 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

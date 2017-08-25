@@ -26,14 +26,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V2h-gQ-l3Y">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Eyr-Vj-hPN">
-                                            <rect key="frame" x="16" y="25.5" width="33" height="14.5"/>
+                                            <rect key="frame" x="15" y="25.5" width="33" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -110,20 +110,29 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swn-0l-vfO">
                                         <rect key="frame" x="281.5" y="0.0" width="93.5" height="50"/>
                                         <state key="normal" title="Photo"/>
+                                        <connections>
+                                            <action selector="takePhoto:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="DbB-cg-vBv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PYT-I3-aoh"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="670-c9-JP0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="670-c9-JP0">
                                 <rect key="frame" x="67" y="489" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.1769456945" green="0.5818329632" blue="0.1235834608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="OZH-C6-8Jp"/>
                                     <constraint firstAttribute="height" constant="128" id="nea-zy-biT"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-3w-2cT">
+                                <rect key="frame" x="251" y="579" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteImage:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="Sr1-Sn-IDd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -135,10 +144,13 @@
                             <constraint firstItem="Mel-cT-6dL" firstAttribute="top" secondItem="670-c9-JP0" secondAttribute="bottom" id="bJh-Fj-9Oh"/>
                             <constraint firstItem="670-c9-JP0" firstAttribute="centerX" secondItem="oqb-Na-VyG" secondAttribute="centerX" id="bMp-7P-YaZ"/>
                             <constraint firstItem="o6Z-cx-Y10" firstAttribute="leading" secondItem="oqb-Na-VyG" secondAttribute="leading" id="fep-dN-aAy"/>
+                            <constraint firstItem="fXN-3w-2cT" firstAttribute="leading" secondItem="670-c9-JP0" secondAttribute="trailing" constant="-56" id="m51-JP-7yP"/>
+                            <constraint firstItem="fXN-3w-2cT" firstAttribute="top" secondItem="670-c9-JP0" secondAttribute="bottom" constant="-38" id="vUf-Pv-exc"/>
                             <constraint firstAttribute="trailing" secondItem="Mel-cT-6dL" secondAttribute="trailing" id="wmo-G5-D5p"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="fXN-3w-2cT" id="cdu-xk-VRk"/>
                         <outlet property="doneButton" destination="RWz-b6-48W" id="ba9-jh-eLX"/>
                         <outlet property="imageView" destination="670-c9-JP0" id="AU9-Al-I4d"/>
                         <outlet property="keyBoardHeightLayoutConstraint" destination="IXy-Mx-J3I" id="Zun-ZL-QJK"/>

@@ -26,6 +26,10 @@
 	<string>Main</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We use your location to know where your note was taken</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>In order to add photos we need to access your camera</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use your camera to supplement your notes</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
