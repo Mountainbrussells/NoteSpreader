@@ -111,7 +111,9 @@ class NoteSpreaderTableViewController: UITableViewController, NSFetchedResultsCo
         formatter.dateStyle = .short
         formatter.timeStyle = .short
         
-        cell.detailTextLabel?.text = formatter.string(from: note.createdOn!)
+        if let date = note.createdOn {
+            cell.detailTextLabel?.text = formatter.string(from: date)
+        }
         
         return cell
     }

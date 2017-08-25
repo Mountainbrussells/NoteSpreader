@@ -115,9 +115,11 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         if note == nil {
             note = Note(context: coreDataController.container.viewContext)
             let location = Location(context: coreDataController.container.viewContext)
-            location.lattitude = (locationController.location?.coordinate.latitude)!
-            location.longitude = (locationController.location?.coordinate.longitude)!
-            note?.location = location
+            if location.lattitude > 0 {
+                location.lattitude = (locationController.location?.coordinate.latitude)!
+                location.longitude = (locationController.location?.coordinate.longitude)!
+                note?.location = location
+            }
         }
         
         note?.text = textView.text
