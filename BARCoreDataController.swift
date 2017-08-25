@@ -15,18 +15,6 @@ class BARCoreDataController:NSObject, NSFetchedResultsControllerDelegate {
     
     let container: NSPersistentContainer!
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Note> = {
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedOn", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
-    
     class var sharedInstance: BARCoreDataController {
         struct Static {
             static let instance: BARCoreDataController = BARCoreDataController()
