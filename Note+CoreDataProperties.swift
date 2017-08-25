@@ -17,20 +17,24 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
-    @NSManaged public var createdOn: Date?
-    @NSManaged public var updatedOn: Date?
-    @NSManaged public var text: String?
     @NSManaged public var actualTitle: String?
+    @NSManaged public var createdOn: Date?
+    @NSManaged public var text: String?
+    @NSManaged public var updatedOn: Date?
+    @NSManaged public var location: Location?
+    
     public var title: String? {
         get {
             guard let text = self.text else {
                 return ""
             }
             if text.characters.count < titleLength {
+                actualTitle = self.text
                 return self.text
             } else {
                 let startIndex =  text.index(text.startIndex, offsetBy: 0)
                 let endIndex = text.index(startIndex, offsetBy: titleLength)
+                actualTitle = text[startIndex...endIndex]
                 return text[startIndex...endIndex]
             }
         }
@@ -39,7 +43,7 @@ extension Note {
             actualTitle = newValue
         }
     }
-
+    
     override public func willSave() {
         if createdOn == nil {
             self.createdOn = Date()

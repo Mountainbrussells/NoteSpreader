@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     
@@ -15,8 +16,10 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var keyBoardHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     
     let coreDataController = BARCoreDataController.sharedInstance
+    let locationController = BARLocationController()
     
     var noteID: NSManagedObjectID?
     var note: Note?
@@ -29,6 +32,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             textView.text = "Type note here"
             textView.textColor = UIColor.lightGray
             doneButton.isHidden = true
+            locationButton.isHidden = true
             
         } else {
             note = coreDataController.container.viewContext.object(with: noteID!) as? Note
@@ -36,6 +40,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             textView.text = note?.text
             doneButton.isHidden = true
             saveButton.isHidden = true
+            locationButton.isHidden = false
         }
         
         
@@ -66,7 +71,8 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // MARK: - Keyboard presentation
+    // MARK: - Keyboard presentation and dismissal
+    
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
@@ -90,6 +96,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    // MARK: - Button implimentation
     
     @IBAction func done(_ sender: Any) {
         self.view.endEditing(true)
@@ -107,7 +114,14 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
         if note == nil {
             note = Note(context: coreDataController.container.viewContext)
+            let location = Location(context: coreDataController.container.viewContext)
+            if location.lattitude > 0 {
+                location.lattitude = (locationController.location?.coordinate.latitude)!
+                location.longitude = (locationController.location?.coordinate.longitude)!
+                note?.location = location
+            }
         }
+        
         note?.text = textView.text
         
         coreDataController.saveContext()
@@ -115,5 +129,20 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func showLocation(_ sender: Any) {
+        guard let location = note?.location else {
+            let alertController = UIAlertController(title: "No Location", message: "there is no location for this note", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        locationController.showLocation(location)
+    }
+    
     
 }

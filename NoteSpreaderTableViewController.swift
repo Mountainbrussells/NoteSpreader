@@ -107,7 +107,13 @@ class NoteSpreaderTableViewController: UITableViewController, NSFetchedResultsCo
         let note = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = note.title
-        cell.detailTextLabel?.text = note.createdOn?.description
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        
+        if let date = note.createdOn {
+            cell.detailTextLabel?.text = formatter.string(from: date)
+        }
         
         return cell
     }

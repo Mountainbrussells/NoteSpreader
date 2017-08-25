@@ -87,17 +87,24 @@
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1r8-1W-HJa">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="save:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="qNt-wh-mjq"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWz-b6-48W">
-                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                        <rect key="frame" x="125" y="0.0" width="125" height="50"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="done:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="iyi-hs-SXn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxy-DC-IKa">
+                                        <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                        <state key="normal" title="Location"/>
+                                        <connections>
+                                            <action selector="showLocation:" destination="BEn-2H-Ggw" eventType="touchUpInside" id="Ffg-rw-3tb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,6 +127,7 @@
                     <connections>
                         <outlet property="doneButton" destination="RWz-b6-48W" id="ba9-jh-eLX"/>
                         <outlet property="keyBoardHeightLayoutConstraint" destination="IXy-Mx-J3I" id="Zun-ZL-QJK"/>
+                        <outlet property="locationButton" destination="Lxy-DC-IKa" id="Hsq-2P-rMb"/>
                         <outlet property="saveButton" destination="1r8-1W-HJa" id="dEi-gO-yjG"/>
                         <outlet property="textView" destination="o6Z-cx-Y10" id="l7n-bj-him"/>
                     </connections>
