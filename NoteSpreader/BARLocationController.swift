@@ -19,6 +19,7 @@ class BARLocationController: NSObject, CLLocationManagerDelegate {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.distanceFilter = 300
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
     }
     
     // MARK - CLLocationMangerDelegate methods

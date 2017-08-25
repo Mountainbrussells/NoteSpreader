@@ -17,6 +17,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var saveButton: UIButton!
     
     let coreDataController = BARCoreDataController.sharedInstance
+    let locationController = BARLocationController()
     
     var noteID: NSManagedObjectID?
     var note: Note?
@@ -109,8 +110,15 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         }
         if note == nil {
             note = Note(context: coreDataController.container.viewContext)
+            let location = Location(context: coreDataController.container.viewContext)
+            location.lattitude = (locationController.location?.coordinate.latitude)!
+            location.longitude = (locationController.location?.coordinate.longitude)!
+            note?.location = location
         }
+        
         note?.text = textView.text
+        
+        print("Current location: \(String(describing: note?.location?.description))")
         
         coreDataController.saveContext()
         
