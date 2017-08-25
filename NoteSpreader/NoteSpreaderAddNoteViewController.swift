@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     
@@ -15,6 +16,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var keyBoardHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     
     let coreDataController = BARCoreDataController.sharedInstance
     let locationController = BARLocationController()
@@ -30,6 +32,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             textView.text = "Type note here"
             textView.textColor = UIColor.lightGray
             doneButton.isHidden = true
+            locationButton.isHidden = true
             
         } else {
             note = coreDataController.container.viewContext.object(with: noteID!) as? Note
@@ -37,6 +40,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             textView.text = note?.text
             doneButton.isHidden = true
             saveButton.isHidden = true
+            locationButton.isHidden = false
         }
         
         
@@ -118,12 +122,35 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
         
         note?.text = textView.text
         
-        print("Current location: \(String(describing: note?.location?.description))")
-        
         coreDataController.saveContext()
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func showLocation(_ sender: Any) {
+        guard let location = note?.location else {
+            let alertController = UIAlertController(title: "No Location", message: "there is no location for this note", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let regionDistance:CLLocationDistance = 100
+        let coordinates = CLLocationCoordinate2DMake(location.lattitude, location.longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "Note Location"
+        mapItem.openInMaps(launchOptions: options)
+    }
+    
     
 }
