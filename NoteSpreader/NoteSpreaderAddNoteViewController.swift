@@ -17,6 +17,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     let coreDataController = BARCoreDataController.sharedInstance
     let locationController = BARLocationController()
@@ -33,6 +34,7 @@ class NoteSpreaderAddNoteViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
             doneButton.isHidden = true
             locationButton.isHidden = true
+            imageView.isHidden = true
             
         } else {
             note = coreDataController.container.viewContext.object(with: noteID!) as? Note
